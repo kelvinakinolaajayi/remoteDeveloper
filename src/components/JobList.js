@@ -2,6 +2,7 @@ import {
     BASE_API_URL,
     jobListSearchEl,
     jobDetailsContentEl,
+    getData
 } from '../common.js';
 import renderSpinner from './Spinner.js';
 import renderJobDetails from './JobDetails.js';
@@ -58,12 +59,7 @@ const clickHandler = async event => {
 
     // Fetch the job item data
     try {
-        const response = await fetch(`${BASE_API_URL}/jobs/${id}`);
-        const data = await response.json()
-        
-        if (!response.ok) { // 4xx, 5xx status code
-            throw new Error(data.description);
-            }
+        const data = await getData(`${BASE_API_URL}/jobs/${id}`);
 
         // Extract job item
         const { jobItem } = data;
@@ -77,7 +73,7 @@ const clickHandler = async event => {
         renderSpinner('job-details');
         renderError(error.message);
     }
-};
+}
 
 
 jobListSearchEl.addEventListener('click', clickHandler);
