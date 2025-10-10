@@ -5,11 +5,14 @@ import {
     searchFormEl,
     jobListSearchEl,
     numberEl,
+    sortingBtnRecentEl,
+    sortingBtnRelevantEl,
     getData
 } from '../common.js';
 import renderError from './Error.js';
 import renderSpinner from './Spinner.js';
 import renderJobList from './JobList.js';
+import renderPaginationButtons from './Pagination.js';
 
 // -- SEARCH COMPONENT
 const submitHandler = async event => {
@@ -33,6 +36,10 @@ const submitHandler = async event => {
     // Remove previous job items
     jobListSearchEl.innerHTML = '';
 
+    // Resert sorting button after new search
+    sortingBtnRecentEl.classList.remove('sorting__button--active');
+    sortingBtnRelevantEl.classList.add('sorting__button--active');
+
     // Render the spinner element
     renderSpinner('search');
 
@@ -46,12 +53,16 @@ const submitHandler = async event => {
 
         // Update state
         state.searchJobItems = jobItems;
+        state.currentPage = 1;
 
         // Remove the spinner
         renderSpinner('search');
 
         // Render the number of results
         numberEl.textContent = jobItems.length;
+
+        // Reset pagination buttons
+        renderPaginationButtons();
 
         // Render job items in search job list
         renderJobList(jobItems);
