@@ -1,5 +1,6 @@
 import {
     BASE_API_URL,
+    state,
     jobListSearchEl,
     jobDetailsContentEl,
     getData
@@ -9,7 +10,10 @@ import renderJobDetails from './JobDetails.js';
 import renderError from './Error.js';
 
 const renderJobList = jobItems => {
-    jobItems.slice(0, 7).forEach(jobItem => {
+    // Remove previous job items
+    jobListSearchEl.innerHTML = '';
+    
+    state.searchJobItems.slice(0, 7).forEach(jobItem => {
         const newJobItemHTML = `
         <li class="job-item">
             <a class="job-item__link" href="${jobItem.id}">
