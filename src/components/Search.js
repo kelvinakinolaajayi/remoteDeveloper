@@ -65,7 +65,7 @@ const submitHandler = async event => {
         renderPaginationButtons();
 
         // Render job items in search job list
-        renderJobList(jobItems);
+        renderJobList();
     } catch (error) {
         renderSpinner('search');
         renderError(error.message);

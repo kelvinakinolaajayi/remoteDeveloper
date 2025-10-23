@@ -10,48 +10,48 @@ import {
 import renderJobList from './JobList.js';
 
 const renderPaginationButtons = () => {
-    // Display the back button if we are on page 2 or further
+    // display back button if we are on page 2 or further
     if (state.currentPage >= 2) {
         paginationBtnBackEl.classList.remove('pagination__button--hidden');
     } else {
         paginationBtnBackEl.classList.add('pagination__button--hidden');
     }
 
-    // Display next button if there are more job items on the next page
-    if ((state.searchJobItems.length - state.currentPage * RESULTS_PER_PAGE) <= 0 ) {
+    // display next button if there are more job items on next page
+    if ((state.searchJobItems.length - state.currentPage * RESULTS_PER_PAGE) <= 0) {
         paginationBtnNextEl.classList.add('pagination__button--hidden');
     } else {
         paginationBtnNextEl.classList.remove('pagination__button--hidden');
     }
 
-    // Update the page numbers
+    // update page numbers
     paginationNumberNextEl.textContent = state.currentPage + 1;
     paginationNumberBackEl.textContent = state.currentPage - 1;
 
-    // Unfocus ('blur') buttons
+    // unfocus ('blur') buttons
     paginationBtnNextEl.blur();
     paginationBtnBackEl.blur();
 };
 
 const clickHandler = event => {
-    // Find the button that was clicked
-    const clickButtonEl = event.target.closest('.pagination__button');
+    // get clicked button element
+    const clickedButtonEl = event.target.closest('.pagination__button');
 
-    // Stop the function if null
-    if (!clickButtonEl) return;
+    // stop function if null
+    if (!clickedButtonEl) return;
 
-    // Check if intention is to go the next or back
-    const nextPage = clickButtonEl.className.includes('--next') ? true : false;
+    // check if intention is next or back
+    const nextPage = clickedButtonEl.className.includes('--next') ? true : false;
 
-    // Update the state
+    // update state
     nextPage ? state.currentPage++ : state.currentPage--;
 
-    // Render paginaion buttons
+    // render pagination buttons
     renderPaginationButtons();
 
-    // Render job items for tht page
+    // render job items for that page
     renderJobList();
-}
+};
 
 paginationEl.addEventListener('click', clickHandler);
 
