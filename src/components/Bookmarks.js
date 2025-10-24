@@ -20,8 +20,11 @@ const clickHandler = event => {
     // Persist data with localstorage
     window.localStorage.setItem('bookmarkJobItems', JSON.stringify(state.bookmarkJobItems));
 
-    // update bookmark icon
+    // Updating bookmark icon
     document.querySelector('.job-info__bookmark-icon').classList.toggle('job-info__bookmark-icon--bookmarked');
+
+    // Rendering the job search list
+    renderJobList();
 };
 
 const mouseEnterHandler = () => {

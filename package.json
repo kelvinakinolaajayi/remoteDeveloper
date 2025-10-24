@@ -1,0 +1,36 @@
+{
+  "name": "remotedevproject",
+  "version": "1.0.0",
+  "description": "Creating a job board for developers who want a remote role.",
+  "homepage": "https://github.com/kelvinakinolaajayi/remoteDeveloper#readme",
+  "bugs": {
+    "url": "https://github.com/kelvinakinolaajayi/remoteDeveloper/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvinakinolaajayi/remoteDeveloper.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "browserslist": [
+    ">0.2%"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "core-js": "^3.46.0",
+    "css-loader": "^7.1.2",
+    "cssnano": "^7.1.1",
+    "mini-css-extract-plugin": "^2.9.4",
+    "postcss-loader": "^8.2.0",
+    "postcss-pxtorem": "^6.1.0",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
